@@ -43,7 +43,7 @@ app.add_middleware(
 )
 
 
-logger.add('log.txt')
+logger.add(settings.LOG_PATH)
 
 
 if __name__ == '__main__':

@@ -7,10 +7,10 @@ class Settings(BaseSettings):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.POSTGRES_URL: str = self.__get_postgres_dsn('async_fallback=True')
-        print(self.POSTGRES_URL)
 
     # APP
     APP_TITLE: str
+    LOG_PATH: str
 
     # Postgres
     POSTGRES_USER: str
@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     POSTGRES_HOST: str
     POSTGRES_PORT: int
     POSTGRES_DB: str
-    POSTGRES_URL: str | None = None
+    POSTGRES_URL: PostgresDsn | None = None
 
     # JWT
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int
@@ -56,4 +56,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-
