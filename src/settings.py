@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     POSTGRES_HOST: str
     POSTGRES_PORT: int
     POSTGRES_DB: str
-    POSTGRES_URL: PostgresDsn | None = None
+    POSTGRES_URL: str | None = None
 
     # JWT
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int
@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     ORIGINS: list[str]
 
     def __get_postgres_dsn(self, query: str | None = None) -> str:
-        return PostgresDsn.build(
+        return str(PostgresDsn.build(
             scheme='postgresql+asyncpg',
             username=self.POSTGRES_USER,
             password=self.POSTGRES_PASSWORD,
@@ -39,7 +39,7 @@ class Settings(BaseSettings):
             port=self.POSTGRES_PORT,
             path=self.POSTGRES_DB,
             query=query
-        )
+        ))
 
     # def __get_postgres_dsn(self) -> str:
     #     return (

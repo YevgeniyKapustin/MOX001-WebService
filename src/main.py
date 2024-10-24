@@ -8,6 +8,7 @@ from loguru import logger
 from redis import asyncio as aioredis
 from starlette.middleware.cors import CORSMiddleware
 
+from users.router import router as users_router
 from src.settings import settings
 
 
@@ -28,7 +29,7 @@ app = FastAPI(
         'defaultModelsExpandDepth': -1
     },
 )
-# app.include_router(???)
+app.include_router(users_router)
 
 
 app.add_middleware(
