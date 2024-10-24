@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+
+  db:
+    image: postgres:15
+    env_file:
+      - src/.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - '5401:5432'
+
+  app:
+    build:
+      context: .
+    depends_on:
+      - db
+    env_file:
+      - src/.env
+    ports:
+      - '8801:8081'
+
+  nginx:
+    image: nginx:1.19.8
+    depends_on:
+     - app
+    ports:
+      - '8001:8001'
+    volumes:
+      - ./nginx-conf.d:/etc/nginx/conf.d
+
+volumes:
+  pgdata:

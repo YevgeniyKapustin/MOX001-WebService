@@ -16,6 +16,8 @@ asyncpg = "^0.30.0"
 gunicorn = "^23.0.0"
 pyjwt = "^2.9.0"
 loguru = "^0.7.2"
+pydantic-settings = "^2.6.0"
+redis = "^5.1.1"
 
 
 [tool.poetry.group.dev.dependencies]
