@@ -1,6 +1,5 @@
 from contextlib import asynccontextmanager
 
-import uvicorn
 from fastapi import FastAPI
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
@@ -8,7 +7,7 @@ from loguru import logger
 from redis import asyncio as aioredis
 from starlette.middleware.cors import CORSMiddleware
 
-from users.router import router as users_router
+from src.users.router import router as users_router
 from src.settings import settings
 
 
@@ -45,7 +44,3 @@ app.add_middleware(
 
 
 logger.add(settings.LOG_PATH)
-
-
-if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=8000)

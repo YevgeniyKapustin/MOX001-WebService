@@ -7,7 +7,7 @@ from starlette.status import (
 from src.database import get_async_session
 from src.users import schemas
 from src.utils.schemas import CreateScheme, OkScheme, UnpassableEntityScheme
-from utils.responses import CreateJSONResponse
+from src.utils.responses import CreateJSONResponse
 
 router = APIRouter(
     prefix='/api/v1/users',
